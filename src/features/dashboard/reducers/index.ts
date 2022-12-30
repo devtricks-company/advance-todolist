@@ -8,6 +8,9 @@ import {
   ADD_PROJECT_SUCCESS,
   ADD_PROJECT_FAIL,
   CHANAGE_CURRENT_PROJECT,
+  ADD_PARTICIPANTS_REQUEST,
+  ADD_PARTICIPANTS_SUCCESS,
+  ADD_PARTICIPANTS_FAIL,
 } from "../types/project.types";
 import { produce } from "immer";
 
@@ -63,6 +66,18 @@ export const ProjectsReducer = (
 
       case CHANAGE_CURRENT_PROJECT:
         draft.project = action.payload;
+        break;
+
+      case ADD_PARTICIPANTS_REQUEST:
+        draft.loading = true;
+        break;
+      case ADD_PARTICIPANTS_SUCCESS:
+        draft.loading = false;
+        draft.project = action.payload;
+        break;
+      case ADD_PARTICIPANTS_FAIL:
+        draft.loading = false;
+        draft.error = action.payload;
         break;
     }
   });

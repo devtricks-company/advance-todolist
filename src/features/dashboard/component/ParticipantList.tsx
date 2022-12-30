@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { User } from "../../auth/types";
+import { UserType } from "../../users/types/user.type";
 import ParticipantItem from "./participantItem";
 
 interface IProjectList {
@@ -17,8 +18,8 @@ const ParticipantList: React.FC<IProjectList> = ({ participants }) => {
   console.log("participantList", participants);
   return (
     <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
-      {participants.map((project) => (
-        <ParticipantItem />
+      {participants.map((participant: User) => (
+        <ParticipantItem participant={participant} key={participant.email} />
       ))}
     </List>
   );

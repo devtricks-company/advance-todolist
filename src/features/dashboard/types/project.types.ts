@@ -86,6 +86,24 @@ export interface ChangeCurrentProject {
 
 //===============================================================================
 
+export const ADD_PARTICIPANTS_REQUEST = "ADD_PARTICIPANTS_REQUEST";
+export const ADD_PARTICIPANTS_SUCCESS = "ADD_PARTICIPANTS_SUCCESS";
+export const ADD_PARTICIPANTS_FAIL = "ADD_PARTICIPANTS_FAIL";
+
+export interface addParticipantsRequest {
+  type: typeof ADD_PARTICIPANTS_REQUEST;
+}
+
+export interface addParticipantSuccess {
+  type: typeof ADD_PARTICIPANTS_SUCCESS;
+  payload: ProjectType;
+}
+
+export interface addParticipantFail {
+  type: typeof ADD_PARTICIPANTS_FAIL;
+  payload: StateError;
+}
+
 export type ProjectDispatchAction =
   | ProjectRequest
   | ProjectSuccess
@@ -93,4 +111,7 @@ export type ProjectDispatchAction =
   | AddProjectRequest
   | AddProjectSuccess
   | AddProjectFail
-  | ChangeCurrentProject;
+  | ChangeCurrentProject
+  | addParticipantsRequest
+  | addParticipantSuccess
+  | addParticipantFail;

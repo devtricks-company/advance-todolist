@@ -6,29 +6,21 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { User } from "../../auth/types";
+import { UserType } from "../../users/types/user.type";
 
-const ParticipantItem = () => {
+interface IParticipantsItem {
+  participant: User;
+}
+const ParticipantItem: React.FC<IParticipantsItem> = ({ participant }) => {
   return (
     <ListItem alignItems="flex-start">
       <ListItemAvatar>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+        <Avatar
+          alt={participant.firstName[0] + " " + participant.lastName[0]}
+        />
       </ListItemAvatar>
-      <ListItemText
-        primary="Brunch this weekend?"
-        secondary={
-          <React.Fragment>
-            <Typography
-              sx={{ display: "inline" }}
-              component="span"
-              variant="body2"
-              color="text.primary"
-            >
-              Ali Connors
-            </Typography>
-            {" — I'll be in your neighborhood doing errands this…"}
-          </React.Fragment>
-        }
-      />
+      <ListItemText primary={participant.email} />
     </ListItem>
   );
 };
